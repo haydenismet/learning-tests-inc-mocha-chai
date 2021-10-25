@@ -1,0 +1,11 @@
+{
+  "name": "helper-func",
+  "version": "1.0.0",
+  "description": "",
+  "main": "helper.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}

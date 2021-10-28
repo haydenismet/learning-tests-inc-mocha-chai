@@ -1,17 +1,15 @@
-let convert = {};
-
-convert.queryParamHelper = function (urlPath, name, value, append, set) {
-  let setUrl = new URL(urlPath);
-  if (set) {
-    setUrl.searchParams.set(name, value);
-  } else if (append) {
-    setUrl.searchParams.append(name, value);
-  }
-  let finalUrl = setUrl.toString();
-  console.log(finalUrl);
-  return finalUrl;
+module.exports = {
+  queryParamHelper: function (urlPath, name, value, set, append) {
+    let setUrl = new URL(urlPath);
+    if (set === true) {
+      setUrl.searchParams.set(name, value);
+    } else {
+      setUrl.searchParams.append(name, value);
+    }
+    let finalUrl = setUrl.toString();
+    return finalUrl;
+  },
 };
-
 /*
 queryParamHelper(
   "https://www.myhelperfunction-set.co.uk/?queryNameSet=queryValueSet",
@@ -28,5 +26,3 @@ queryParamHelper(
   true,
   false
 );*/
-
-module.exports = convert;

@@ -1,32 +1,34 @@
-let convert = {};
-
-convert.queryParamHelper = function (urlPath, name, value, append, set) {
-  let setUrl = new URL(urlPath);
-  if (set) {
-    setUrl.searchParams.set(name, value);
-  } else if (append) {
-    setUrl.searchParams.append(name, value);
-  }
-  let finalUrl = setUrl.toString();
-  console.log(finalUrl);
-  return finalUrl;
+module.exports = {
+  queryParamHelper: function (urlPath, name, value, set) {
+    let setUrl;
+    try {
+      setUrl = new URL(urlPath);
+    } catch (e) {
+      console.log("INVALID_URL_PROVIDED " + e);
+      return e;
+    }
+    if (set === true) {
+      setUrl.searchParams.set(name, value);
+    } else {
+      setUrl.searchParams.append(name, value);
+    }
+    let finalUrl = setUrl.toString();
+    return finalUrl;
+  },
 };
 
-/*
-queryParamHelper(
+/*module.exports.queryParamHelper(
   "https://www.myhelperfunction-set.co.uk/?queryNameSet=queryValueSet",
   "queryNameSet",
   "queryValueSetViaFunction",
-  false,
-  true
-);
-
-queryParamHelper(
-  "https://www.myhelperfunction-append.co.uk/",
-  "queryNameAppended",
-  "queryValueAppended",
-  true,
   false
 );*/
 
-module.exports = convert;
+/*
+module.exports.queryParamHelper(
+  "https://www.myhelperfunction-append.co.uk/",
+  "queryNameAppended",
+  "queryValueAppended",
+  true
+);
+*/

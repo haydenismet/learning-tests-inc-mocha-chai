@@ -17,12 +17,12 @@ module.exports = {
   },
 };
 
-module.exports.queryParamHelper(
+/*module.exports.queryParamHelper(
   "https://www.myhelperfunction-set.co.uk/?queryNameSet=queryValueSet",
   "queryNameSet",
   "queryValueSetViaFunction",
   false
-);
+);*/
 
 /*
 module.exports.queryParamHelper(

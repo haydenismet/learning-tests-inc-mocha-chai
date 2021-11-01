@@ -4,6 +4,8 @@ var assert = chai.assert;
 var helper = require("./helper.js");
 var queryParamHelper = helper.queryParamHelper;
 
+/* Mocha & Chai */
+
 describe("helperFunctions", function () {
   describe("queryParamSet", function () {
     let urlPath;

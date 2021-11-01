@@ -1,6 +1,12 @@
 module.exports = {
-  queryParamHelper: function (urlPath, name, value, set, append) {
-    let setUrl = new URL(urlPath);
+  queryParamHelper: function (urlPath, name, value, set) {
+    let setUrl;
+    try {
+      setUrl = new URL(urlPath);
+    } catch (e) {
+      console.log("INVALID_URL_PROVIDED " + e);
+      return e;
+    }
     if (set === true) {
       setUrl.searchParams.set(name, value);
     } else {
@@ -10,19 +16,19 @@ module.exports = {
     return finalUrl;
   },
 };
-/*
-queryParamHelper(
+
+module.exports.queryParamHelper(
   "https://www.myhelperfunction-set.co.uk/?queryNameSet=queryValueSet",
   "queryNameSet",
   "queryValueSetViaFunction",
-  false,
-  true
+  false
 );
 
-queryParamHelper(
+/*
+module.exports.queryParamHelper(
   "https://www.myhelperfunction-append.co.uk/",
   "queryNameAppended",
   "queryValueAppended",
-  true,
-  false
-);*/
+  true
+);
+*/
